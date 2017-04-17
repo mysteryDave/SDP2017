@@ -14,19 +14,6 @@ class SecurityControlUnit(sensors: ListBuffer[Sensor]) extends ControlUnit(senso
 
   override def pollSensors() {
     if (timecheck) super.pollSensors()
-    else pollHazardSensors()
   }
 
-  def pollHazardSensors() {
-    for (sensor <- sensors) {
-      if (!sensor.isSecuritySensor) {
-        if (sensor.isTriggered) {
-          System.out.println("A " + sensor.getSensorType + " sensor was triggered at " + sensor.getLocation)
-        }
-        else {
-          System.out.println("Polled " + sensor.getSensorType + " at " + sensor.getLocation + " successfully")
-        }
-      }
-    }
-  }
 }
