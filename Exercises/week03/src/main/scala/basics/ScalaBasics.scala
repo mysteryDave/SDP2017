@@ -74,7 +74,7 @@ object ScalaBasics {
    */
   def minFor(r: Array[Int]): Int = {
     var nMinimum: Int = Int.MaxValue //we are told list is non-empty, an empty list will return Int.MaxValue
-    for(nArrayElement <- 0 to r.length - 1) nMinimum = nMinimum.min(r(nArrayElement))
+    for(nArrayElement <- 0 until r.length) nMinimum = nMinimum.min(r(nArrayElement))
     nMinimum
   }
 
@@ -95,7 +95,8 @@ object ScalaBasics {
   def minRecursive(r: Array[Int]): Int = {
     if (r.length == 0) Int.MaxValue
     else if (r.length == 1) r(0)
-    else r(0).min(minRecursive(r.drop(1)))
+    else if ( r(0) < minRecursive(r.drop(1)) ) r(0)
+    else minRecursive(r.drop(1))
   }
 
   /**
