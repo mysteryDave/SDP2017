@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 /**
   * Created by David Tucker on 17/04/2017.
   */
-class SecurityControlUnit(sensors: ListBuffer[Sensor]) extends ControlUnit(sensors: ListBuffer[Sensor]) {
+class SecurityControlUnit(sensors: ListBuffer[Sensor], alarms: ListBuffer[Alarm]) extends ControlUnit(sensors: ListBuffer[Sensor], alarms: ListBuffer[Alarm]) {
   def timecheck() : Boolean = {
     val timeNow = Calendar.getInstance()
     val nHour = timeNow.get(Calendar.HOUR_OF_DAY)
@@ -13,7 +13,7 @@ class SecurityControlUnit(sensors: ListBuffer[Sensor]) extends ControlUnit(senso
   }
 
   override def pollSensors() {
-    if (timecheck) super.pollSensors()
+    if (timecheck()) super.pollSensors()
   }
 
 }
