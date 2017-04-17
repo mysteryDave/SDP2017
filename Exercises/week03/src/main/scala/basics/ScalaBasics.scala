@@ -36,7 +36,7 @@ object ScalaBasics {
    * @param n the number of odd integers in the range
    * @return a Range of odd integers, excluding the last add integer
    */
-  def oddRange(n: Int): Range = ???
+  def oddRange(n: Int): Range = new Range(1, n + 1, 2)
   
   /**
    * Write a function that returns the minimum integer in the Array r.
@@ -50,7 +50,15 @@ object ScalaBasics {
    * @param r the array of integers
    * @return the minimum integer in the array
    */
-  def minWhile(r: Array[Int]): Int = ???
+  def minWhile(r: Array[Int]): Int = {
+    var nMinimum: Int = Int.MaxValue //we are told list is non-empty, an empty list will return Int.MaxValue
+    var nArrayElement = 0
+    while (nArrayElement < r.length) {
+      if (r(nArrayElement) < nMinimum) nMinimum = r(nArrayElement)
+      nArrayElement = nArrayElement + 1
+    }
+    nMinimum
+  }
 
   /**
    * Write a function that returns the minimum integer in the Array r.
@@ -64,7 +72,11 @@ object ScalaBasics {
    * @param r the array of integers
    * @return the minimum integer in the array
    */
-  def minFor(r: Array[Int]): Int = ???
+  def minFor(r: Array[Int]): Int = {
+    var nMinimum: Int = Int.MaxValue //we are told list is non-empty, an empty list will return Int.MaxValue
+    for(nArrayElement <- 0 to r.length - 1) nMinimum = nMinimum.min(r(nArrayElement))
+    nMinimum
+  }
 
   /**
    * Write a function called minRecursive that returns the minimum integer in the Array r.
@@ -80,7 +92,11 @@ object ScalaBasics {
    * @param r the array of integers
    * @return the minimum integer in the array
    */
-  def minRecursive(r: Array[Int]): Int = ???
+  def minRecursive(r: Array[Int]): Int = {
+    if (r.length == 0) Int.MaxValue
+    else if (r.length == 1) r(0)
+    else r(0).min(minRecursive(r.drop(1)))
+  }
 
   /**
    * Return the base 36 equivalent of the BitInt b.
