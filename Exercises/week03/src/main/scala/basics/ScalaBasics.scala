@@ -107,7 +107,14 @@ object ScalaBasics {
    * @param b a big integer
    * @return the base 36 equivalent
    */
-  def base36(b: BigInt): String = ???
+  def base36(b: BigInt): String = { //can use recursion. String can be constructed of modulo by 36 appended to result of base36(b - b%36)
+    //note: char and int are interchangable ( an ASCII char is represented by a byte/int )
+    val nLastChar = b % 36
+    val nRemaining = (b - nLastChar) / 36
+    val nFinalChar = nLastChar + { if (nLastChar < 10) 48 else 87 }
+    if (nRemaining > 0) base36(nRemaining) + nFinalChar.toChar.toString
+    else nFinalChar.toChar.toString
+  }
 
   /**
    * Splits the String s in half.
