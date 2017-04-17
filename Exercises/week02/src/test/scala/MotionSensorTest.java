@@ -9,21 +9,21 @@ public class MotionSensorTest {
     
   @Test
   public void testThatIsTriggeredReturnsFalse() {
-    FireSensor sensor = new FireSensor();
+    MotionSensor sensor = new MotionSensor();
     boolean isTriggered = sensor.isTriggered();
     assertEquals(false, isTriggered);
   }
 
   @Test
   public void testThatGetLocationReturnsNull() {
-    FireSensor sensor = new FireSensor();
+    MotionSensor sensor = new MotionSensor();
     String location = sensor.getLocation();
     assertEquals(null, location);
   }
 
   @Test
   public void testThatGetSensorTypeReturnsNull() {
-    FireSensor sensor = new FireSensor();
+    MotionSensor sensor = new MotionSensor();
     String sensorType = sensor.getSensorType();
     assertEquals(null, sensorType);
   }

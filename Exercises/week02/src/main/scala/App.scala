@@ -12,6 +12,7 @@ object App {
     val sensors = new ListBuffer[Sensor]()
     sensors += new FireSensor()
     sensors += new SmokeSensor()
+    sensors += new MotionSensor()
     val controlUnit: ControlUnit = new ControlUnit(sensors)
     val scanner: Scanner = new Scanner(System.in)
     var input: String = ""
