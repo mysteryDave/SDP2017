@@ -173,7 +173,7 @@ object ScalaBasics {
       if ((cLetter >= 'a' && cLetter <= 'z') || (cLetter >= 'A' && cLetter <= 'Z')) //Could include 0-9 if allowed in Palindrome. Assumed not here.
     } yield cLetter
     val sPair: (String, String) = splitInHalf(sTrimString.toUpperCase)
-    if (sPair._2.length > sPair._1.length) sPair._2.drop (1).matches (sPair._1.reverse)
+    if (sPair._2.length > sPair._1.length) sPair._2.drop(1).matches (sPair._1.reverse)
     else sPair._2.matches (sPair._1.reverse)
   }
 
