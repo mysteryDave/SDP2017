@@ -160,7 +160,22 @@ object ScalaBasics {
    * @param s the potential palindrome
    * @return true if s is a palindrome; false otherwise
    */
-  def isPalindrome(s: String): Boolean = ???
+  def isPalindrome(s: String): Boolean = {
+    //Recursion makes most sense to me. Return value should be first==last && Palindrome(middle)
+    /* without using recursion, only for/yield
+     * 1) make upper case & strip non alphabet characters
+     * 3) split in half (discard mid if odd number) (splitInHalf)
+     * 4) reverse one list
+     * 5) check substrings match
+     */
+    val sTrimString = for {
+      cLetter <- s
+      if ((cLetter >= 'a' && cLetter <= 'z') || (cLetter >= 'A' && cLetter <= 'Z')) //Could include 0-9 if allowed in Palindrome. Assumed not here.
+    } yield cLetter
+    val sPair: (String, String) = splitInHalf(sTrimString.toUpperCase)
+    if (sPair._2.length > sPair._1.length) sPair._2.drop (1).matches (sPair._1.reverse)
+    else sPair._2.matches (sPair._1.reverse)
+  }
 
   /**
    * You don't have to complete this one as we've removed it from the list
