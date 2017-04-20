@@ -64,9 +64,11 @@ class VirtualMachineImp extends VirtualMachine {
     *         new virtual machine
     */
   override def pop(): (Int, VirtualMachine) = {
-    val value = instructions.pop()
-    (value, this)
-
+    if (instructions.isEmpty) throw new MachineUnderflowException("VM stack is empty.")
+    else {
+      val value = instructions.pop()
+      (value, this)
+    }
   }
 
 

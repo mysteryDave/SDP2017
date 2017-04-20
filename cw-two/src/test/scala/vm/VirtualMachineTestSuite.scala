@@ -1,5 +1,7 @@
 package vm
 
+import java.nio.BufferUnderflowException
+
 import factory.VirtualMachineFactory
 import org.scalatest.FunSpec
 
@@ -9,9 +11,11 @@ import org.scalatest.FunSpec
 class VirtualMachineTestSuite extends FunSpec {
   describe("Additional VM files for testing.") {
     val vmParser = VirtualMachineFactory.virtualMachineParser
+    val vm = VirtualMachineFactory.virtualMachine
     it("should catch an buffer underrun") {
+        val overPullCode = vmParser.parse("programs/p10.vm")
       intercept[MachineUnderflowException] {
-        val code = vmParser.parse("programs/p10.vm")
+        vm.execute(overPullCode)
       }
     }
   }
