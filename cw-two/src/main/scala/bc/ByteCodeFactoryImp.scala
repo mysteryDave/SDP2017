@@ -21,8 +21,9 @@ class ByteCodeFactoryImp extends ByteCodeValues with ByteCodeFactory {
     */
   override def make(byte: Byte, args: Int*): ByteCode = {
     val theInstr = for(name: String <- names if bytecode(name) == byte) yield name
-    theInstr(0) match {
-      case "iconst" => new iConstByte(args(0))
+    if (!theInstr.isEmpty) theInstr(0) match {
+      case "iconst" => if (args.isEmpty) throw new InvalidBytecodeException("iconst Byte '" + theInstr + "' must have an integer parameter. BYTE:" + byte + "| args:" + args)
+                       else new iConstByte(args(0))
       case "iadd" => new iadd
       case "isub" => new iSubByte
       case "imul" => new imul
@@ -36,6 +37,7 @@ class ByteCodeFactoryImp extends ByteCodeValues with ByteCodeFactory {
       case "print" => new printByte
       case _ => throw new InvalidBytecodeException("Unknown Byte Code Operation '" + theInstr + "' BYTE:" + byte + "| args:" + args)
     }
+    else throw new InvalidBytecodeException("Unknown Byte Code Operation BYTE:" + byte + "| args:" + args)
   }
 
 }

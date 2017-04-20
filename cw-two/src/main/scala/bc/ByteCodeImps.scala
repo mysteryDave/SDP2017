@@ -114,7 +114,7 @@ class iDupByte() extends ByteCode {
   }
 }
 
-class print() extends ByteCode {
+class printByte() extends ByteCode {
   val byteString = "print"
   override val code: Byte = bytecode(byteString)
   override def toString = byteString
