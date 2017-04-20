@@ -1,5 +1,5 @@
 package vm
-import bc.ByteCode
+import bc.{ByteCode, InvalidBytecodeException}
 import factory.VirtualMachineFactory
 import vendor.Instruction
 
@@ -13,10 +13,14 @@ class VirtualMachineParserImp extends VirtualMachineParser {
   def parseInstructionList(instructionsL: InstructionList): Vector[ByteCode] = {
     var bytes = Vector[Byte]()
     for (instruction <- instructionsL) {
-      bytes = bytes :+ byteParse.bytecode(instruction.name)
-      for (i <- instruction.args) bytes = bytes :+ i.toByte
+      try {
+        val instrByteCode: Byte = byteParse.bytecode(instruction.name)
+        bytes = bytes :+ byteParse.bytecode(instruction.name)
+        for (i <- instruction.args) bytes = bytes :+ i.toByte
+      } catch {
+        case e: Exception => throw new InvalidBytecodeException("Unknown Byte Code Operation: '" + instruction.toString + "'")
+      }
     }
-    println("BYTES LIST " + bytes)
     byteParse.parse(bytes)
   }
   /**
