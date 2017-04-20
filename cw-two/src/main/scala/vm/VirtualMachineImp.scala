@@ -42,7 +42,7 @@ class VirtualMachineImp extends VirtualMachine {
     */
   override def executeOne(bc: Vector[ByteCode]): (Vector[ByteCode], VirtualMachine) = {
     bc.head.execute(this)
-    (bc.drop(0), this)
+    (bc.drop(1), this)
   }
 
   /**
