@@ -6,6 +6,12 @@ import factory.VirtualMachineFactory
   * Created by samia on 20/04/2017.
   */
 class ByteCodeParserImp extends ByteCodeParser {
+  /**
+    * Parses a vector of `Byte` into a vector of `ByteCode`.
+    *
+    * @param bc a vector of bytes representing bytecodes
+    * @return a vector of `ByteCode` objects
+    */
   override def parse(bc: Vector[Byte]): Vector[ByteCode] = {
     var result: Vector[ByteCode] = Vector[ByteCode]()
     var isIconst: Boolean = false

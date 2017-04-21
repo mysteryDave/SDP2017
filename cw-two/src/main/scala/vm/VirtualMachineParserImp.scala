@@ -1,4 +1,5 @@
 package vm
+
 import bc.{ByteCode, InvalidBytecodeException}
 import factory.VirtualMachineFactory
 import vendor.Instruction
@@ -10,6 +11,17 @@ class VirtualMachineParserImp extends VirtualMachineParser {
   val byteParse = VirtualMachineFactory.byteCodeParser
   type InstructionList = Vector[Instruction]
 
+
+  /**
+    * Returns a vector of [[bc.ByteCode]].
+    *
+    * This method parses a file into a vector of bytecode objects.
+    * Note, this method should throw a [[bc.InvalidBytecodeException]]
+    * if it fails to parse a program file correctly.
+    *
+    * @param instructionsL
+    * @return a vector of bytecodes
+    */
   def parseInstructionList(instructionsL: InstructionList): Vector[ByteCode] = {
     var bytes = Vector[Byte]()
     for (instruction <- instructionsL) {
@@ -23,6 +35,7 @@ class VirtualMachineParserImp extends VirtualMachineParser {
     }
     byteParse.parse(bytes)
   }
+
   /**
     * Returns a vector of [[bc.ByteCode]].
     *

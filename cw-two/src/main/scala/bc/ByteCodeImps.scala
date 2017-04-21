@@ -9,6 +9,8 @@ import vm.VirtualMachine
 
 class iConstByte(number: Int) extends ByteCode {
   val byteString = "iconst"
+
+
   override val code: Byte = bytecode(byteString)
 
   override def toString = byteString + " " + "number"
@@ -24,6 +26,7 @@ class iConstByte(number: Int) extends ByteCode {
 
 class iSubByte() extends ByteCode {
   val byteString = "isub"
+
   override val code: Byte = bytecode(byteString)
 
   override def toString = byteString
@@ -39,6 +42,8 @@ class iSubByte() extends ByteCode {
 
 class iDivByte() extends ByteCode {
   val byteString = "idiv"
+
+
   override val code: Byte = bytecode(byteString)
 
   override def toString = byteString
@@ -61,6 +66,8 @@ class iDivByte() extends ByteCode {
 
 class iRemByte() extends ByteCode {
   val byteString = "irem"
+
+
   override val code: Byte = bytecode(byteString)
 
   override def toString = byteString
