@@ -13,7 +13,11 @@ class ByteCodeParserImp extends ByteCodeParser {
       if (isIconst) isIconst = false
       else if (bytecode("iconst") == bc(i)) {
         isIconst = true
-        result = result :+ VirtualMachineFactory.byteCodeFactory.make(bc(i), bc(i + 1))
+        try {
+          result = result :+ VirtualMachineFactory.byteCodeFactory.make(bc(i), bc(i + 1))
+        } catch {
+          case e: Exception => throw new InvalidBytecodeException("Byte code instruction 'iconst' missing parameter")
+        }
       } else {
         result = result :+ VirtualMachineFactory.byteCodeFactory.make(bc(i))
       }
