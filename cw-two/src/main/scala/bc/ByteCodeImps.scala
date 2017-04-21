@@ -1,4 +1,5 @@
 package bc
+
 import vm.VirtualMachine
 
 /**
@@ -9,7 +10,9 @@ import vm.VirtualMachine
 class iConstByte(number: Int) extends ByteCode {
   val byteString = "iconst"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString + " " + "number"
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
@@ -22,7 +25,9 @@ class iConstByte(number: Int) extends ByteCode {
 class iSubByte() extends ByteCode {
   val byteString = "isub"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
@@ -35,33 +40,53 @@ class iSubByte() extends ByteCode {
 class iDivByte() extends ByteCode {
   val byteString = "idiv"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
     * @param vm the initial virtual machine
     * @return a new virtual machine
     */
-  override def execute(vm: VirtualMachine): VirtualMachine = vm.push(vm.pop()._1 / vm.pop()._1)
+  override def execute(vm: VirtualMachine): VirtualMachine = {
+    val value1 = vm.pop()._1
+    val value2 = vm.pop()._1
+    if (value2 <= 0) {
+      throw new ArithmeticException(s"Integer division by zero: $value1 / $value2")
+    }
+    vm.push(value1 / value2)
+  }
 }
 
 class iRemByte() extends ByteCode {
   val byteString = "irem"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
     * @param vm the initial virtual machine
     * @return a new virtual machine
     */
-  override def execute(vm: VirtualMachine): VirtualMachine = vm.push(vm.pop()._1 % vm.pop()._1)
+  override def execute(vm: VirtualMachine): VirtualMachine = {
+    val value1 = vm.pop()._1
+    val value2 = vm.pop()._1
+    if (value2 <= 0) {
+      throw new ArithmeticException(s"Integer division by zero: $value1 / $value2")
+    }
+    vm.push(value1 % value2)
+  }
 }
 
 class iNegByte() extends ByteCode {
   val byteString = "ineg"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
@@ -74,7 +99,9 @@ class iNegByte() extends ByteCode {
 class iIncByte() extends ByteCode {
   val byteString = "iinc"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
@@ -87,7 +114,9 @@ class iIncByte() extends ByteCode {
 class iDecByte() extends ByteCode {
   val byteString = "idec"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
@@ -100,7 +129,9 @@ class iDecByte() extends ByteCode {
 class iDupByte() extends ByteCode {
   val byteString = "idup"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
@@ -117,7 +148,9 @@ class iDupByte() extends ByteCode {
 class printByte() extends ByteCode {
   val byteString = "print"
   override val code: Byte = bytecode(byteString)
+
   override def toString = byteString
+
   /**
     * Returns a new [[VirtualMachine]] after executing this bytecode operation.
     *
