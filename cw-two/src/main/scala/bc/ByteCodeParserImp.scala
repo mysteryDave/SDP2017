@@ -9,6 +9,9 @@ class ByteCodeParserImp extends ByteCodeParser {
   /**
     * Parses a vector of `Byte` into a vector of `ByteCode`.
     *
+    * NOTE: As arguments for iconst are passed here as part of a Byte array,
+    * Values over 127 (and under -128) will overflow and flip +/-. Could handle, or raise overflow exception.
+    *
     * @param bc a vector of bytes representing bytecodes
     * @return a vector of `ByteCode` objects
     */
