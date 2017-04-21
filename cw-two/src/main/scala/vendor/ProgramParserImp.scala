@@ -7,7 +7,13 @@ import scala.io.Source
   */
 class ProgramParserImp extends ProgramParser {
 
-
+  /**
+    * Parses a file representation of a bytecode program
+    * into an `InstructionList`.
+    *
+    * @param file the file to parse
+    * @return an instruction list
+    */
   override def parse(file: String): InstructionList = {
     val lines = Source.fromFile(file).getLines()
     var instructionL: InstructionList = Vector[Instruction]()
@@ -17,6 +23,13 @@ class ProgramParserImp extends ProgramParser {
     instructionL
   }
 
+  /**
+    * Parses a string representation of a bytecode program
+    * into an `InstructionList`.
+    *
+    * @param string the string to parse
+    * @return an instruction list
+    */
   override def parseString(string: String): InstructionList = {
     var instructionLines: Array[String] = string.split("\n")
     var result: InstructionList = Vector[Instruction]()
