@@ -152,6 +152,13 @@ class VirtualMachineTestSuite extends FunSpec {
         next = next._2.executeOne(next._1)
         assert(next._2.state.head == 260144641)
       }
+
+      it("[D22] should raise an exception in case of overflow of parameter arguments in byte code") {
+        val eByteOverflow = intercept[InvalidBytecodeException] {
+          vmParser.parse("programs/p14.vm")
+        }
+        assert(eByteOverflow.getMessage.startsWith("Byte code instructions can only take values in range"))
+      }
     }
   }
 }
