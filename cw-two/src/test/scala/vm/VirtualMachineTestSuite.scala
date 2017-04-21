@@ -151,6 +151,9 @@ class VirtualMachineTestSuite extends FunSpec {
         assert(next._2.state.head == 2048383)
         next = next._2.executeOne(next._1)
         assert(next._2.state.head == 260144641)
+        /* We could go further and add exception handling around integer overflow, however as the values passed in are Byte,
+         * most operations (increment, add) this is very unlikely to occur and requires four consecutive max/min Byte
+         * multiplication operations to reach. */
       }
 
       it("[D22] should raise an exception in case of overflow of parameter arguments in byte code") {
