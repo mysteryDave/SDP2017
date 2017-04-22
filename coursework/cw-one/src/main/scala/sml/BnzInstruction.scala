@@ -2,6 +2,9 @@ package sml
 
 /**
   * Created by DT on 22/04/2017.
+  *
+  * Jumps to first occurance of requested label in program
+  * @throws NoSuchElementException in case of jump to label not existing in program
   */
 
 case class BnzInstruction(label: String, opcode: String, register: Int, nextInstr: String) extends Instruction(label, opcode) {
