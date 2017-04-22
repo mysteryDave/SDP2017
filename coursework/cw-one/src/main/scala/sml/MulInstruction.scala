@@ -16,5 +16,5 @@ class MulInstruction(label: String, op: String, val result: Int, val op1: Int, v
 
 object MulInstruction {
   def apply(label: String, result: Int, op1: Int, op2: Int) =
-    new AddInstruction(label, "mul", result, op1, op2)
+    new MulInstruction(label, "mul", result, op1, op2)
 }
