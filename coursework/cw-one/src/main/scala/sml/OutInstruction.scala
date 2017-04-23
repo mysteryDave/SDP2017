@@ -9,7 +9,7 @@ class OutInstruction(label: String, op: String, val op1: Int)
   }
 
   override def toString(): String = {
-    super.toString + " " + op1
+    super.toString + " (print) " + op1
   }
 }
 
