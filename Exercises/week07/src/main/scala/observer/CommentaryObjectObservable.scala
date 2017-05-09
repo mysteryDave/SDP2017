@@ -4,12 +4,15 @@ import scala.collection.mutable.ListBuffer
 /**
   * Created by dtucke03 on 08/05/2017.
   */
-class CommentaryObjectObservable(val title: String) extends Commentary {
+class CommentaryObjectObservable(subscribers: ListBuffer[Observer], title: String) extends CommentaryObject(subscribers, title) with Commentary {
 
-  var commentaryObj = new CommentaryObject(new ListBuffer[Observer], title)
-  var sLatestUpdate: String = ""
+  def this(title: String) = {
+    this(new ListBuffer[Observer], title)
+  }
 
-  def setDesc(sNewDesc: String): Unit = sLatestUpdate = sNewDesc
+  def setDesc(sNewDesc: String) = {
+    sSubjectDetail = sNewDesc
+    notifyObservers()
+  }
 
-  def notifyObservers(): Unit = commentaryObj.notifyObservers(sLatestUpdate)
 }
