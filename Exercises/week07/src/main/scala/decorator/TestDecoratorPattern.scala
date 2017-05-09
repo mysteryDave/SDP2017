@@ -21,6 +21,12 @@ object TestDecoratorPattern {
     print(pizza)
     pizza = new Ham(pizza)
     print(pizza)
+    pizza = new SimplyNonVegPizza
+    print (pizza)
+    pizza = new Chicken(pizza)
+    print (pizza)
+    pizza = new FetaCheese(pizza)
+    print (pizza)
   }
 
   private def print(pizza: Pizza) {
