@@ -1,5 +1,5 @@
 package observer
-/*
+
 object TestObserver extends App {
     val obj: CommentaryObjectObservable = new CommentaryObjectObservable("Soccer Match [2014AUG24]")
     val observer: SMSUsersObserver = new SMSUsersObserver(obj, "Adam Warner [New York]")
@@ -13,4 +13,3 @@ object TestObserver extends App {
     obj.setDesc("It's a goal!!")
     obj.setDesc("Current score 1-0")
 }
-*/
