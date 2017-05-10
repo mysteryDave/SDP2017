@@ -1,8 +1,11 @@
 package abstractfactory
 
 object ParserFactoryProducer {
-  def getFactory(s: String) = ???
+  //Factory factory (factory producer)
 
-  // TODO
+  def getFactory(s: String): AbstractParserFactory = s match {
+    case "NYCFactory" => NYCParserFactory
+    case "LondonFactory" => LondonParserFactory
+  }
 
 }
