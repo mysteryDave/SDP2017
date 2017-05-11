@@ -3,7 +3,12 @@ package builder
 // TODO
 
 object SportsCarBuilder extends CarBuilder {
-  override def buildBodyStyle: Unit = ???
+
+  var car = new Car("SPORTS")
+
+  val dSportSize: Array[Double] = {192.3, 76.2, 60., 112.9, 65.3}
+
+  override def buildBodyStyle: Unit = bodyDesc(dSportSize, sSportDims)
 
   override def buildPower: Unit = ???
 
