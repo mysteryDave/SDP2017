@@ -25,19 +25,7 @@ trait CarBuilder {
     sBody
   }
 
-  def powerDesc(nHP: Integer, nHPRPM: Integer, nTorque: Integer, nTorqueRPM: Integer) =  f"$nHP hp @ $nHPRPM%,n rpm; $nTorque ft lb of torque @ $nTorqueRPM%,n rpm"
-
-  //Assumption: different cars may be not all have all components. Director may not know components.
-  //Individual builder subclass can override with different specifics if needed.
-  def buildCar: Unit = {
-    buildBodyStyle
-    buildPower
-    buildEngine
-    buildBreaks
-    buildSeats
-    buildWindows
-    buildFuelType
-  }
+  def powerDesc(nHP: Integer, nHPRPM: Integer, nTorque: Integer, nTorqueRPM: Integer) =  f"$nHP hp @ $nHPRPM%,d rpm; $nTorque ft lb of torque @ $nTorqueRPM%,d rpm"
 
   def buildBodyStyle
 
