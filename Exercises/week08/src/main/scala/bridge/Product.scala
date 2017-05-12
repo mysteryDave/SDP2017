@@ -1,7 +1,7 @@
 package bridge
 
-trait Product {
+trait Product { //alternatively productName parameter to Product constructor.
   def productName: String
 
-  def produce
+  def produce: Unit = println("Producing " + productName)
 }
