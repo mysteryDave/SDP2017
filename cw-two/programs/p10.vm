@@ -1,0 +1,8 @@
+iconst 4
+iconst 5
+iadd
+isub
+iadd
+isub
+iadd
+print
