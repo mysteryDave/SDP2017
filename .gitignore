@@ -1,6 +1,10 @@
 
 
 #IDE Files
+Exercises/*/.idea
+Coursework/cw-one/.idea
+Coursework/cw-two/.idea
+
 =======
 *.idea
 *.class
